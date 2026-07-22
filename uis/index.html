@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="es" class="bg-brand-deep text-text-primary">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>TrackFlow | Logistica de ultima milla y gestion de almacenes</title>
+		<meta
+			name="description"
+			content="TrackFlow coordina logistica de ultima milla, almacenaje, preparacion de pedidos, envios y devoluciones para marcas e-commerce en Estados Unidos y Espana."
+		/>
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="TrackFlow | Logistica conectada entre EE. UU. y Espana" />
+		<meta
+			property="og:description"
+			content="Control tecnologico de la cadena logistica con visibilidad en tiempo real, operacion segura y cobertura internacional."
+		/>
+		<meta property="og:url" content="https://trackflow.example" />
+		<meta property="og:image" content="https://trackflow.example/assets/images/logo-trackflow.png" />
+		<link rel="icon" href="./assets/images/favicon-trackflow.png" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+		<style type="text/tailwindcss">
+			@theme {
+				--font-heading: "Manrope", "Segoe UI", system-ui, sans-serif;
+				--font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+
+				--color-brand-navy: #031a33;
+				--color-brand-deep: #06111d;
+				--color-brand-blue: #0756b8;
+				--color-brand-electric: #087fe5;
+				--color-brand-cyan: #08c4d9;
+				--color-brand-cyan-light: #67e8f9;
+				--color-surface-dark: #0b1724;
+				--color-surface-light: #f4f8fc;
+				--color-text-primary: #f8fafc;
+				--color-text-secondary: #afc0d1;
+				--color-border-brand: #1c3f5e;
+			}
+
+			@layer base {
+				html {
+					font-family: var(--font-body);
+				}
+				h1,
+				h2,
+				h3,
+				h4,
+				button,
+				.font-heading {
+					font-family: var(--font-heading);
+				}
+			}
+
+			@layer utilities {
+				.hero-grid {
+					background-image:
+						radial-gradient(circle at 15% 10%, color-mix(in oklab, var(--color-brand-electric) 30%, transparent), transparent 35%),
+						radial-gradient(circle at 85% 25%, color-mix(in oklab, var(--color-brand-cyan) 26%, transparent), transparent 38%),
+						linear-gradient(140deg, rgba(6, 17, 29, 1) 0%, rgba(3, 26, 51, 0.94) 45%, rgba(6, 17, 29, 1) 100%);
+				}
+
+				.route-stroke {
+					stroke: url(#routeGradient);
+					stroke-width: 2;
+					stroke-linecap: round;
+					stroke-dasharray: 8 10;
+					animation: route-flow 14s linear infinite;
+				}
+
+				.header-scrolled {
+					background-color: color-mix(in srgb, var(--color-brand-deep) 82%, transparent);
+					box-shadow: 0 8px 24px rgba(3, 26, 51, 0.32);
+				}
+			}
+
+			@keyframes route-flow {
+				to {
+					stroke-dashoffset: -220;
+				}
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				html:focus-within {
+					scroll-behavior: auto;
+				}
+				[data-motion="soft"] {
+					animation: none !important;
+					transition-duration: 0.01ms !important;
+					transition-delay: 0ms !important;
+				}
+			}
+		</style>
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Organization",
+				"name": "TrackFlow",
+				"url": "https://trackflow.example",
+				"logo": "https://trackflow.example/assets/images/logo-trackflow.png",
+				"foundingDate": "2009",
+				"description": "Empresa de logistica de ultima milla y gestion de almacenes para marcas e-commerce con operacion en Estados Unidos y Espana.",
+				"areaServed": [
+					{
+						"@type": "Country",
+						"name": "Estados Unidos"
+					},
+					{
+						"@type": "Country",
+						"name": "Espana"
+					}
+				],
+				"contactPoint": [
+					{
+						"@type": "ContactPoint",
+						"contactType": "sales",
+						"email": "contacto@trackflow.example",
+						"telephone": "+34-976-220-410",
+						"availableLanguage": ["es", "en"]
+					}
+				],
+				"address": [
+					{
+						"@type": "PostalAddress",
+						"streetAddress": "1201 Harbor Route, Unit 6",
+						"addressLocality": "Los Angeles",
+						"addressRegion": "CA",
+						"postalCode": "90021",
+						"addressCountry": "US"
+					},
+					{
+						"@type": "PostalAddress",
+						"streetAddress": "Calle Plataforma Logistica 18",
+						"addressLocality": "Zaragoza",
+						"postalCode": "50014",
+						"addressCountry": "ES"
+					}
+				]
+			}
+		</script>
+	</head>
+
+	<body class="bg-brand-deep text-text-primary antialiased selection:bg-brand-cyan/25 selection:text-text-primary">
+		<a
+			href="#inicio"
+			class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-md focus:bg-brand-cyan focus:px-4 focus:py-2 focus:font-heading focus:font-semibold focus:text-brand-deep"
+		>
+			Saltar al contenido
+		</a>
+
+		<header
+			id="site-header"
+			class="sticky top-0 z-50 border-b border-border-brand/60 bg-brand-deep/70 backdrop-blur-md transition-all duration-300"
+			data-motion="soft"
+		>
+			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<div class="flex min-h-20 items-center justify-between gap-4 py-3">
+					<a href="#inicio" aria-label="Ir al inicio de TrackFlow" class="rounded-lg p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">
+						<img
+							src="./assets/images/logo-trackflow.png"
+							alt="TrackFlow"
+							width="192"
+							height="128"
+							class="h-12 w-auto object-contain sm:h-14"
+						/>
+					</a>
+
+					<button
+						id="mobile-menu-button"
+						type="button"
+						aria-expanded="false"
+						aria-controls="mobile-menu"
+						aria-label="Abrir menu principal"
+						class="inline-flex items-center justify-center rounded-lg border border-border-brand/90 bg-surface-dark/90 p-2.5 text-text-primary transition hover:border-brand-cyan hover:text-brand-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan md:hidden"
+						data-motion="soft"
+					>
+						<svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="1.8">
+							<path stroke-linecap="round" d="M3 6h18M3 12h18M3 18h18" />
+						</svg>
+					</button>
+
+					<nav aria-label="Principal" class="hidden md:block">
+						<ul class="flex items-center gap-6 text-sm font-medium text-text-secondary">
+							<li><a href="#inicio" class="transition hover:text-brand-cyan focus-visible:outline-none focus-visible:text-brand-cyan">Inicio</a></li>
+							<li><a href="#por-que" class="transition hover:text-brand-cyan focus-visible:outline-none focus-visible:text-brand-cyan">Por que elegirnos</a></li>
+							<li><a href="#como-funciona" class="transition hover:text-brand-cyan focus-visible:outline-none focus-visible:text-brand-cyan">Como funciona</a></li>
+							<li><a href="#experiencias" class="transition hover:text-brand-cyan focus-visible:outline-none focus-visible:text-brand-cyan">Experiencias</a></li>
+							<li><a href="#contacto" class="transition hover:text-brand-cyan focus-visible:outline-none focus-visible:text-brand-cyan">Contacto</a></li>
+						</ul>
+					</nav>
+
+					<a
+						href="#contacto"
+						class="hidden rounded-lg bg-linear-to-r from-brand-electric to-brand-cyan px-4 py-2.5 font-heading text-sm font-semibold text-brand-deep shadow-[0_0_0_1px_rgba(103,232,249,0.3)] transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan md:inline-flex"
+						data-motion="soft"
+					>
+						Solicitar informacion
+					</a>
+				</div>
+
+				<nav id="mobile-menu" aria-label="Menu movil" class="mt-1 border-t border-border-brand/70 pb-4 pt-4 md:hidden">
+					<ul class="space-y-1 text-sm font-medium text-text-secondary">
+						<li><a href="#inicio" class="block rounded-md px-3 py-2 transition hover:bg-brand-navy hover:text-brand-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">Inicio</a></li>
+						<li><a href="#por-que" class="block rounded-md px-3 py-2 transition hover:bg-brand-navy hover:text-brand-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">Por que elegirnos</a></li>
+						<li><a href="#como-funciona" class="block rounded-md px-3 py-2 transition hover:bg-brand-navy hover:text-brand-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">Como funciona</a></li>
+						<li><a href="#experiencias" class="block rounded-md px-3 py-2 transition hover:bg-brand-navy hover:text-brand-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">Experiencias</a></li>
+						<li><a href="#contacto" class="block rounded-md px-3 py-2 transition hover:bg-brand-navy hover:text-brand-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">Contacto</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<main id="inicio">
+			<section class="hero-grid relative overflow-hidden border-b border-border-brand/70">
+				<svg
+					aria-hidden="true"
+					focusable="false"
+					class="pointer-events-none absolute inset-0 h-full w-full opacity-70"
+					viewBox="0 0 1200 700"
+					preserveAspectRatio="none"
+				>
+					<defs>
+						<linearGradient id="routeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+							<stop offset="0%" stop-color="#0756B8" />
+							<stop offset="100%" stop-color="#08C4D9" />
+						</linearGradient>
+					</defs>
+					<path class="route-stroke" d="M0,490 C170,430 280,580 440,500 S750,350 930,430 1100,470 1200,390" />
+					<path class="route-stroke" d="M40,220 C180,160 260,270 410,220 S690,80 860,170 1070,330 1200,250" />
+					<circle cx="410" cy="220" r="4" fill="#67E8F9" data-motion="soft" class="animate-pulse" />
+					<circle cx="930" cy="430" r="4" fill="#08C4D9" data-motion="soft" class="animate-pulse" />
+				</svg>
+
+				<div class="relative mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-24">
+					<div>
+						<p class="inline-flex items-center gap-2 rounded-full border border-brand-cyan/40 bg-brand-navy/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-brand-cyan-light">
+							<span class="inline-block size-2 rounded-full bg-brand-cyan"></span>
+							Logistica conectada entre EE. UU. y Espana
+						</p>
+
+						<h1 class="mt-6 max-w-2xl text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">
+							Control total de tu operacion con
+							  <span class="bg-linear-to-r from-brand-electric to-brand-cyan bg-clip-text text-transparent">flujo logistico trazable y rapido</span>
+						</h1>
+
+						<p class="mt-6 max-w-xl text-base leading-7 text-text-secondary sm:text-lg">
+							TrackFlow ayuda a marcas e-commerce a delegar toda su cadena logistica: almacenamos inventario,
+							preparamos pedidos, enviamos con una red optimizada de transportistas y gestionamos devoluciones con visibilidad en tiempo real.
+						</p>
+
+						<div class="mt-8 flex flex-wrap gap-3">
+							<a
+								href="#contacto"
+								class="rounded-lg bg-linear-to-r from-brand-electric to-brand-cyan px-6 py-3 font-heading text-sm font-bold text-brand-deep shadow-[0_0_0_1px_rgba(103,232,249,0.32)] transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan"
+								data-motion="soft"
+							>
+								Solicitar informacion
+							</a>
+							<a
+								href="#como-funciona"
+								class="rounded-lg border border-brand-electric/60 bg-brand-deep/40 px-6 py-3 font-heading text-sm font-semibold text-text-primary transition hover:border-brand-cyan hover:text-brand-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan"
+								data-motion="soft"
+							>
+								Descubrir como funciona
+							</a>
+						</div>
+
+						<ul class="mt-10 grid gap-3 sm:grid-cols-2 xl:grid-cols-4" aria-label="Indicadores de TrackFlow">
+							<li class="rounded-xl border border-border-brand bg-surface-dark/90 p-4 shadow-[inset_0_1px_0_rgba(103,232,249,0.06)]">
+								<p class="text-xs uppercase tracking-wide text-text-secondary">Fundacion</p>
+								<p class="mt-1 font-heading text-2xl font-extrabold text-brand-cyan-light">2009</p>
+							</li>
+							<li class="rounded-xl border border-border-brand bg-surface-dark/90 p-4 shadow-[inset_0_1px_0_rgba(103,232,249,0.06)]">
+								<p class="text-xs uppercase tracking-wide text-text-secondary">Mercados</p>
+								<p class="mt-1 font-heading text-2xl font-extrabold">EE. UU. y Espana</p>
+							</li>
+							<li class="rounded-xl border border-border-brand bg-surface-dark/90 p-4 shadow-[inset_0_1px_0_rgba(103,232,249,0.06)]">
+								<p class="text-xs uppercase tracking-wide text-text-secondary">Equipo</p>
+								<p class="mt-1 font-heading text-2xl font-extrabold">~130 personas</p>
+							</li>
+							<li class="rounded-xl border border-border-brand bg-surface-dark/90 p-4 shadow-[inset_0_1px_0_rgba(103,232,249,0.06)]">
+								<p class="text-xs uppercase tracking-wide text-text-secondary">Facturacion anual</p>
+								<p class="mt-1 font-heading text-2xl font-extrabold">~9 M EUR</p>
+							</li>
+						</ul>
+					</div>
+
+					<figure class="relative mx-auto w-full max-w-xl self-center rounded-2xl border border-border-brand/80 bg-surface-dark/85 p-3 shadow-[0_20px_60px_rgba(3,26,51,0.45)]">
+						<img
+							src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1280&q=80"
+							alt="Operativa de preparacion de pedidos y control de trazabilidad en un almacen"
+							width="1280"
+							height="853"
+							class="h-full w-full rounded-xl object-cover"
+						/>
+						<figcaption class="absolute bottom-6 left-6 right-6 rounded-lg border border-border-brand bg-brand-deep/80 p-4 text-sm text-text-secondary backdrop-blur">
+							Dashboard operativo en tiempo real con estado de pedidos, rutas y devoluciones por centro logistico.
+						</figcaption>
+					</figure>
+				</div>
+			</section>
+
+			<section class="border-b border-border-brand/70 bg-brand-navy/40 py-14">
+				<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+					<div class="max-w-4xl">
+						<h2 class="text-3xl font-bold sm:text-4xl">TrackFlow, socio logistico B2B para escalar sin friccion</h2>
+						<p class="mt-5 leading-7 text-text-secondary">
+							TrackFlow es una empresa de logistica de ultima milla y gestion de almacenes fundada en 2009 en Los Angeles.
+							Opera en dos mercados, Estados Unidos y Espana, con almacenes en Los Angeles y Zaragoza. Para las marcas que trabajan con nosotros,
+							toda la operacion logistica, desde que se genera un pedido hasta su entrega o devolucion, queda bajo responsabilidad de TrackFlow.
+						</p>
+						<p class="mt-4 leading-7 text-text-secondary">
+							Nacimos para resolver un problema muy concreto: las marcas e-commerce dominan producto y ventas,
+							pero no siempre la complejidad de la entrega final. Nuestra plataforma conecta inventario, picking, carriers y devoluciones
+							en un solo flujo trazable, seguro y medible.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<section id="por-que" class="border-b border-border-brand/70 bg-brand-deep py-16 sm:py-20">
+				<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+					<h2 class="text-3xl font-bold sm:text-4xl">Por que elegirnos</h2>
+					<p class="mt-3 max-w-2xl text-text-secondary">Tecnologia operativa y ejecucion local para mover cada pedido con precision.</p>
+
+					<div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+						<article class="group rounded-2xl border border-border-brand bg-surface-dark/85 p-6 transition duration-300 hover:-translate-y-0.5 hover:border-brand-cyan/70 hover:shadow-[0_14px_34px_rgba(8,127,229,0.16)]" data-motion="soft">
+							<svg aria-hidden="true" focusable="false" class="size-11 text-brand-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M3 7.5 12 3l9 4.5-9 4.5L3 7.5Z" />
+								<path stroke-linecap="round" stroke-linejoin="round" d="M3 12.5 12 17l9-4.5M3 17.5 12 22l9-4.5" />
+							</svg>
+							<h3 class="mt-4 text-xl font-bold">Inventario centralizado y visible</h3>
+							<p class="mt-3 text-sm leading-6 text-text-secondary">Stock sincronizado por SKU y mercado para reducir roturas y sobreventa entre canales.</p>
+						</article>
+
+						<article class="group rounded-2xl border border-border-brand bg-surface-dark/85 p-6 transition duration-300 hover:-translate-y-0.5 hover:border-brand-cyan/70 hover:shadow-[0_14px_34px_rgba(8,127,229,0.16)]" data-motion="soft">
+							<svg aria-hidden="true" focusable="false" class="size-11 text-brand-electric" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M14 6h8v8" />
+								<path stroke-linecap="round" stroke-linejoin="round" d="m22 6-8.6 8.6a4 4 0 0 1-5.7 0l-1.4-1.4a4 4 0 0 0-5.6 0L2 14.5" />
+							</svg>
+							<h3 class="mt-4 text-xl font-bold">Picking rapido con control de calidad</h3>
+							<p class="mt-3 text-sm leading-6 text-text-secondary">Procedimientos por lote y verificacion final para acelerar la salida de pedidos sin perder exactitud.</p>
+						</article>
+
+						<article class="group rounded-2xl border border-border-brand bg-surface-dark/85 p-6 transition duration-300 hover:-translate-y-0.5 hover:border-brand-cyan/70 hover:shadow-[0_14px_34px_rgba(8,127,229,0.16)]" data-motion="soft">
+							<svg aria-hidden="true" focusable="false" class="size-11 text-brand-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M3 12h6l2 3 4-6 2 3h4" />
+								<circle cx="5" cy="18" r="2" />
+								<circle cx="19" cy="18" r="2" />
+							</svg>
+							<h3 class="mt-4 text-xl font-bold">Red de transportistas optimizada</h3>
+							<p class="mt-3 text-sm leading-6 text-text-secondary">Asignacion dinamica por zona, volumen y SLA para maximizar entregas en plazo.</p>
+						</article>
+
+						<article class="group rounded-2xl border border-border-brand bg-surface-dark/85 p-6 transition duration-300 hover:-translate-y-0.5 hover:border-brand-cyan/70 hover:shadow-[0_14px_34px_rgba(8,127,229,0.16)]" data-motion="soft">
+							<svg aria-hidden="true" focusable="false" class="size-11 text-brand-electric" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+								<rect x="3" y="4" width="18" height="16" rx="2" />
+								<path stroke-linecap="round" d="M7 8h10M7 12h6M7 16h5" />
+							</svg>
+							<h3 class="mt-4 text-xl font-bold">Seguimiento en tiempo real</h3>
+							<p class="mt-3 text-sm leading-6 text-text-secondary">Eventos de trazabilidad desde almacenes hasta ultima milla, con alertas para incidencias clave.</p>
+						</article>
+
+						<article class="group rounded-2xl border border-border-brand bg-surface-dark/85 p-6 transition duration-300 hover:-translate-y-0.5 hover:border-brand-cyan/70 hover:shadow-[0_14px_34px_rgba(8,127,229,0.16)]" data-motion="soft">
+							<svg aria-hidden="true" focusable="false" class="size-11 text-brand-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M4 10V5h5M20 14v5h-5" />
+								<path stroke-linecap="round" stroke-linejoin="round" d="m20 5-7 7m-9 7 7-7" />
+							</svg>
+							<h3 class="mt-4 text-xl font-bold">Devoluciones eficientes</h3>
+							<p class="mt-3 text-sm leading-6 text-text-secondary">Flujo inverso estructurado para reacondicionar, reponer stock y reducir costes de gestion.</p>
+						</article>
+
+						<article class="group rounded-2xl border border-border-brand bg-surface-dark/85 p-6 transition duration-300 hover:-translate-y-0.5 hover:border-brand-cyan/70 hover:shadow-[0_14px_34px_rgba(8,127,229,0.16)]" data-motion="soft">
+							<svg aria-hidden="true" focusable="false" class="size-11 text-brand-electric" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+								<path stroke-linecap="round" d="M3 12h18M12 3v18" />
+								<circle cx="12" cy="12" r="8" />
+							</svg>
+							<h3 class="mt-4 text-xl font-bold">Operacion internacional coordinada</h3>
+							<p class="mt-3 text-sm leading-6 text-text-secondary">Sincronizacion operativa entre centros de Los Angeles y Zaragoza para escalar en dos mercados.</p>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section id="como-funciona" class="border-b border-border-brand/70 bg-brand-navy/40 py-16 sm:py-20">
+				<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+					<h2 class="text-3xl font-bold sm:text-4xl">Como funciona</h2>
+					<p class="mt-3 max-w-2xl text-text-secondary">Una ruta operativa unificada desde la recepcion del inventario hasta la entrega final o devolucion.</p>
+
+					<ol class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-5" aria-label="Proceso operativo de TrackFlow">
+						<li class="rounded-2xl border border-border-brand bg-surface-dark/90 p-5">
+							<p class="inline-flex size-9 items-center justify-center rounded-full border border-brand-cyan bg-brand-navy font-heading font-bold text-brand-cyan-light">1</p>
+							<h3 class="mt-4 text-lg font-bold">Recepcion y almacenamiento</h3>
+							<p class="mt-2 text-sm leading-6 text-text-secondary">Auditamos el inventario y lo ubicamos por rotacion y categoria para acelerar futuras salidas.</p>
+						</li>
+						<li class="rounded-2xl border border-border-brand bg-surface-dark/90 p-5">
+							<p class="inline-flex size-9 items-center justify-center rounded-full border border-brand-cyan bg-brand-navy font-heading font-bold text-brand-cyan-light">2</p>
+							<h3 class="mt-4 text-lg font-bold">Integracion de tienda online</h3>
+							<p class="mt-2 text-sm leading-6 text-text-secondary">Conectamos pedidos y estados con tu stack e-commerce para automatizar reglas de cumplimiento.</p>
+						</li>
+						<li class="rounded-2xl border border-border-brand bg-surface-dark/90 p-5">
+							<p class="inline-flex size-9 items-center justify-center rounded-full border border-brand-cyan bg-brand-navy font-heading font-bold text-brand-cyan-light">3</p>
+							<h3 class="mt-4 text-lg font-bold">Preparacion y empaquetado</h3>
+							<p class="mt-2 text-sm leading-6 text-text-secondary">Picking guiado y empaquetado con control de calidad para minimizar errores y reclamaciones.</p>
+						</li>
+						<li class="rounded-2xl border border-border-brand bg-surface-dark/90 p-5">
+							<p class="inline-flex size-9 items-center justify-center rounded-full border border-brand-cyan bg-brand-navy font-heading font-bold text-brand-cyan-light">4</p>
+							<h3 class="mt-4 text-lg font-bold">Envio y seguimiento</h3>
+							<p class="mt-2 text-sm leading-6 text-text-secondary">Asignamos carrier optimo y entregamos trazabilidad con hitos en tiempo real para tu equipo y cliente final.</p>
+						</li>
+						<li class="rounded-2xl border border-border-brand bg-surface-dark/90 p-5 md:col-span-2 xl:col-span-1">
+							<p class="inline-flex size-9 items-center justify-center rounded-full border border-brand-cyan bg-brand-navy font-heading font-bold text-brand-cyan-light">5</p>
+							<h3 class="mt-4 text-lg font-bold">Entrega o devolucion</h3>
+							<p class="mt-2 text-sm leading-6 text-text-secondary">Cerramos el ciclo con prueba de entrega o logistica inversa estructurada cuando procede devolucion.</p>
+						</li>
+					</ol>
+				</div>
+			</section>
+
+			<section id="experiencias" class="border-b border-border-brand/70 bg-brand-deep py-16 sm:py-20">
+				<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+					<h2 class="text-3xl font-bold sm:text-4xl">Experiencias de clientes</h2>
+					<p class="mt-3 max-w-2xl text-text-secondary">Testimonios demostrativos de marcas e-commerce que escalan operaciones con TrackFlow.</p>
+
+					<div class="mt-10 grid gap-5 lg:grid-cols-3">
+						<article class="rounded-2xl border border-border-brand bg-surface-dark/90 p-6">
+							<p aria-hidden="true" class="text-5xl leading-none text-brand-cyan/45">"</p>
+							<p class="-mt-2 text-sm leading-7 text-text-secondary">Desde que centralizamos fulfillment con TrackFlow, bajamos incidencias en picos de campana y ganamos visibilidad diaria por pedido.</p>
+							<div class="mt-5" role="img" aria-label="Valoracion: 5 de 5">
+								<span class="rounded-full border border-brand-cyan/60 bg-brand-navy px-2.5 py-1 text-xs font-semibold text-brand-cyan-light">Rating 5/5</span>
+							</div>
+							<p class="mt-5 font-heading text-base font-bold">Aitana Moya</p>
+							<p class="text-sm text-text-secondary">Directora de Operaciones, Northbay Commerce</p>
+						</article>
+
+						<article class="rounded-2xl border border-border-brand bg-surface-dark/90 p-6">
+							  <p aria-hidden="true" class="text-5xl leading-none text-brand-cyan/45">"</p>
+							<p class="-mt-2 text-sm leading-7 text-text-secondary">La integracion entre tienda, almacen y carriers nos permitio pasar de reaccionar tarde a anticiparnos con datos reales.</p>
+							<div class="mt-5" role="img" aria-label="Valoracion: 5 de 5">
+								<span class="rounded-full border border-brand-cyan/60 bg-brand-navy px-2.5 py-1 text-xs font-semibold text-brand-cyan-light">Rating 5/5</span>
+							</div>
+							<p class="mt-5 font-heading text-base font-bold">Daniel Rubio</p>
+							<p class="text-sm text-text-secondary">Head of Supply Chain, Driftly Goods</p>
+						</article>
+
+						<article class="rounded-2xl border border-border-brand bg-surface-dark/90 p-6">
+							  <p aria-hidden="true" class="text-5xl leading-none text-brand-cyan/45">"</p>
+							<p class="-mt-2 text-sm leading-7 text-text-secondary">Con presencia en Espana y EE. UU. lanzamos nuevos mercados sin duplicar equipo logistico interno.</p>
+							<div class="mt-5" role="img" aria-label="Valoracion: 4 de 5">
+								<span class="rounded-full border border-brand-cyan/60 bg-brand-navy px-2.5 py-1 text-xs font-semibold text-brand-cyan-light">Rating 4/5</span>
+							</div>
+							<p class="mt-5 font-heading text-base font-bold">Marta Calderon</p>
+							<p class="text-sm text-text-secondary">CEO, Velora Home Labs</p>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section id="contacto" class="bg-brand-navy/55 py-16 sm:py-20">
+				<div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+					<div>
+						<h2 class="text-3xl font-bold sm:text-4xl">Solicita informacion</h2>
+						<p class="mt-4 max-w-lg leading-7 text-text-secondary">
+							Comparte tu contexto y te ayudamos a dimensionar una operacion logistica robusta para crecimiento internacional.
+						</p>
+						<p class="mt-6 rounded-xl border border-border-brand bg-surface-dark/80 p-4 text-sm text-text-secondary">
+							Respuesta orientativa en menos de 24 horas laborables para consultas comerciales.
+						</p>
+					</div>
+
+					<form id="contact-form" class="rounded-2xl border border-border-brand bg-surface-dark/90 p-6 sm:p-8" novalidate>
+						<div class="grid gap-5 sm:grid-cols-2">
+							<div class="sm:col-span-1">
+								<label for="nombre" class="mb-2 block text-sm font-medium text-text-primary">Nombre</label>
+								<input
+									id="nombre"
+									name="nombre"
+									type="text"
+									autocomplete="name"
+									required
+									class="w-full rounded-lg border border-border-brand bg-brand-deep/80 px-3 py-2.5 text-text-primary placeholder:text-text-secondary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan"
+									placeholder="Tu nombre"
+								/>
+							</div>
+
+							<div class="sm:col-span-1">
+								<label for="email" class="mb-2 block text-sm font-medium text-text-primary">Correo electronico</label>
+								<input
+									id="email"
+									name="email"
+									type="email"
+									autocomplete="email"
+									required
+									class="w-full rounded-lg border border-border-brand bg-brand-deep/80 px-3 py-2.5 text-text-primary placeholder:text-text-secondary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan"
+									placeholder="nombre@empresa.com"
+								/>
+							</div>
+
+							<div class="sm:col-span-1">
+								<label for="empresa" class="mb-2 block text-sm font-medium text-text-primary">Empresa</label>
+								<input
+									id="empresa"
+									name="empresa"
+									type="text"
+									autocomplete="organization"
+									required
+									class="w-full rounded-lg border border-border-brand bg-brand-deep/80 px-3 py-2.5 text-text-primary placeholder:text-text-secondary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan"
+									placeholder="Nombre de tu empresa"
+								/>
+							</div>
+
+							<div class="sm:col-span-1">
+								<label for="mercado" class="mb-2 block text-sm font-medium text-text-primary">Mercado de interes</label>
+								<select
+									id="mercado"
+									name="mercado"
+									required
+									class="w-full rounded-lg border border-border-brand bg-brand-deep/80 px-3 py-2.5 text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan"
+								>
+									<option value="">Selecciona una opcion</option>
+									<option value="espana">Espana</option>
+									<option value="estados-unidos">Estados Unidos</option>
+									<option value="ambos">Ambos mercados</option>
+								</select>
+							</div>
+
+							<div class="sm:col-span-2">
+								<label for="mensaje" class="mb-2 block text-sm font-medium text-text-primary">Mensaje</label>
+								<textarea
+									id="mensaje"
+									name="mensaje"
+									rows="4"
+									autocomplete="off"
+									required
+									class="w-full rounded-lg border border-border-brand bg-brand-deep/80 px-3 py-2.5 text-text-primary placeholder:text-text-secondary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan"
+									placeholder="Cuentanos volumen de pedidos, mercados y retos logisticos"
+								></textarea>
+							</div>
+
+							<div class="sm:col-span-2">
+								<label class="inline-flex items-start gap-3 text-sm text-text-secondary" for="privacidad">
+									<input
+										id="privacidad"
+										name="privacidad"
+										type="checkbox"
+										required
+										class="mt-0.5 size-4 rounded border-border-brand bg-brand-deep text-brand-cyan focus-visible:ring-brand-cyan"
+									/>
+									<span>Acepto la politica de privacidad y el tratamiento de datos para recibir informacion comercial.</span>
+								</label>
+							</div>
+						</div>
+
+						<div class="mt-6 flex flex-wrap items-center gap-4">
+							<button
+								type="submit"
+								class="rounded-lg bg-linear-to-r from-brand-electric to-brand-cyan px-6 py-3 font-heading text-sm font-bold text-brand-deep transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan"
+								data-motion="soft"
+							>
+								Enviar solicitud
+							</button>
+							<p id="form-status" class="text-sm text-brand-cyan-light" role="status" aria-live="polite"></p>
+						</div>
+					</form>
+				</div>
+			</section>
+		</main>
+
+		<footer class="border-t border-border-brand/60 bg-brand-deep py-10">
+			<div class="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[1.2fr_0.8fr_0.8fr] lg:px-8">
+				<div>
+					<img
+						src="./assets/images/logo-trackflow.png"
+						alt="TrackFlow"
+						width="192"
+						height="128"
+						loading="lazy"
+						class="h-12 w-auto object-contain"
+					/>
+					<p class="mt-4 max-w-sm text-sm leading-6 text-text-secondary">
+						Partner logistico para marcas e-commerce que necesitan control, velocidad operativa y trazabilidad integral en EE. UU. y Espana.
+					</p>
+				</div>
+
+				<nav aria-label="Navegacion secundaria">
+					<h2 class="text-sm font-heading font-bold uppercase tracking-wide text-brand-cyan-light">Navegacion</h2>
+					<ul class="mt-4 space-y-2 text-sm text-text-secondary">
+						<li><a href="#inicio" class="transition hover:text-brand-cyan focus-visible:outline-none focus-visible:text-brand-cyan">Inicio</a></li>
+						<li><a href="#por-que" class="transition hover:text-brand-cyan focus-visible:outline-none focus-visible:text-brand-cyan">Por que elegirnos</a></li>
+						<li><a href="#como-funciona" class="transition hover:text-brand-cyan focus-visible:outline-none focus-visible:text-brand-cyan">Como funciona</a></li>
+						<li><a href="#experiencias" class="transition hover:text-brand-cyan focus-visible:outline-none focus-visible:text-brand-cyan">Experiencias</a></li>
+						<li><a href="#contacto" class="transition hover:text-brand-cyan focus-visible:outline-none focus-visible:text-brand-cyan">Contacto</a></li>
+					</ul>
+				</nav>
+
+				<div>
+					<h2 class="text-sm font-heading font-bold uppercase tracking-wide text-brand-cyan-light">Contacto Espana</h2>
+					<!-- Datos de demostracion para prototipo, no corresponden a una oficina real -->
+					<address class="mt-4 not-italic text-sm leading-6 text-text-secondary">
+						Calle Plataforma Logistica 18<br />
+						50014 Zaragoza, Espana<br />
+						<a href="tel:+34976220410" class="transition hover:text-brand-cyan focus-visible:outline-none focus-visible:text-brand-cyan">+34 976 220 410</a><br />
+						<a href="mailto:contacto@trackflow.example" class="transition hover:text-brand-cyan focus-visible:outline-none focus-visible:text-brand-cyan">contacto@trackflow.example</a>
+					</address>
+				</div>
+			</div>
+
+			<div class="mx-auto mt-8 flex max-w-7xl flex-wrap items-center justify-between gap-4 border-t border-border-brand/50 px-4 pt-6 text-sm text-text-secondary sm:px-6 lg:px-8">
+				<p>&copy; <span id="current-year">2026</span> TrackFlow. Todos los derechos reservados.</p>
+				<ul class="flex flex-wrap items-center gap-4">
+					<li><a href="https://trackflow.example/legal" class="transition hover:text-brand-cyan focus-visible:outline-none focus-visible:text-brand-cyan">Aviso legal</a></li>
+					<li><a href="https://trackflow.example/privacy" class="transition hover:text-brand-cyan focus-visible:outline-none focus-visible:text-brand-cyan">Privacidad</a></li>
+					<li><a href="https://trackflow.example/cookies" class="transition hover:text-brand-cyan focus-visible:outline-none focus-visible:text-brand-cyan">Cookies</a></li>
+				</ul>
+			</div>
+		</footer>
+
+		<script src="./script.js"></script>
+	</body>
+</html>
