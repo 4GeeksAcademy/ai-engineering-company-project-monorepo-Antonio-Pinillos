@@ -73,8 +73,8 @@
 				}
 
 				.header-scrolled {
-					background-color: color-mix(in srgb, var(--color-brand-deep) 82%, transparent);
-					box-shadow: 0 8px 24px rgba(3, 26, 51, 0.32);
+					background-color: rgba(248, 251, 255, 0.98);
+					box-shadow: 0 10px 26px rgba(3, 26, 51, 0.12);
 				}
 			}
 
@@ -154,18 +154,18 @@
 
 		<header
 			id="site-header"
-			class="sticky top-0 z-50 border-b border-border-brand/60 bg-brand-deep/70 backdrop-blur-md transition-all duration-300"
+			class="sticky top-0 z-50 border-b border-brand-blue/15 bg-[#f8fbff]/95 backdrop-blur-md transition-all duration-300"
 			data-motion="soft"
 		>
 			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-				<div class="flex min-h-20 items-center justify-between gap-4 py-3">
-					<a href="#inicio" aria-label="Ir al inicio de TrackFlow" class="rounded-lg p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">
+				<div class="flex min-h-24 items-center justify-between gap-3 py-3 sm:min-h-28">
+					<a href="#inicio" aria-label="Ir al inicio de TrackFlow" class="rounded-lg p-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">
 						<img
-							src="./assets/images/logo-trackflow.png"
+							src="./asset/img/logo-trackflow.png"
 							alt="TrackFlow"
-							width="192"
-							height="128"
-							class="h-12 w-auto object-contain sm:h-14"
+							width="320"
+							height="213"
+							class="h-16 w-auto object-contain sm:h-20"
 						/>
 					</a>
 
@@ -175,7 +175,7 @@
 						aria-expanded="false"
 						aria-controls="mobile-menu"
 						aria-label="Abrir menu principal"
-						class="inline-flex items-center justify-center rounded-lg border border-border-brand/90 bg-surface-dark/90 p-2.5 text-text-primary transition hover:border-brand-cyan hover:text-brand-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan md:hidden"
+						class="inline-flex items-center justify-center rounded-lg border border-brand-blue/25 bg-white p-2.5 text-brand-navy transition hover:border-brand-cyan hover:text-brand-electric focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan md:hidden"
 						data-motion="soft"
 					>
 						<svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -184,12 +184,12 @@
 					</button>
 
 					<nav aria-label="Principal" class="hidden md:block">
-						<ul class="flex items-center gap-6 text-sm font-medium text-text-secondary">
-							<li><a href="#inicio" class="transition hover:text-brand-cyan focus-visible:outline-none focus-visible:text-brand-cyan">Inicio</a></li>
-							<li><a href="#por-que" class="transition hover:text-brand-cyan focus-visible:outline-none focus-visible:text-brand-cyan">Por que elegirnos</a></li>
-							<li><a href="#como-funciona" class="transition hover:text-brand-cyan focus-visible:outline-none focus-visible:text-brand-cyan">Como funciona</a></li>
-							<li><a href="#experiencias" class="transition hover:text-brand-cyan focus-visible:outline-none focus-visible:text-brand-cyan">Experiencias</a></li>
-							<li><a href="#contacto" class="transition hover:text-brand-cyan focus-visible:outline-none focus-visible:text-brand-cyan">Contacto</a></li>
+						<ul class="flex items-center gap-6 text-sm font-semibold text-brand-navy">
+							<li><a href="#inicio" class="transition hover:text-brand-electric focus-visible:outline-none focus-visible:text-brand-electric">Inicio</a></li>
+							<li><a href="#por-que" class="transition hover:text-brand-electric focus-visible:outline-none focus-visible:text-brand-electric">Por que elegirnos</a></li>
+							<li><a href="#como-funciona" class="transition hover:text-brand-electric focus-visible:outline-none focus-visible:text-brand-electric">Como funciona</a></li>
+							<li><a href="#experiencias" class="transition hover:text-brand-electric focus-visible:outline-none focus-visible:text-brand-electric">Experiencias</a></li>
+							<li><a href="#contacto" class="transition hover:text-brand-electric focus-visible:outline-none focus-visible:text-brand-electric">Contacto</a></li>
 						</ul>
 					</nav>
 
@@ -202,13 +202,13 @@
 					</a>
 				</div>
 
-				<nav id="mobile-menu" aria-label="Menu movil" class="mt-1 border-t border-border-brand/70 pb-4 pt-4 md:hidden">
-					<ul class="space-y-1 text-sm font-medium text-text-secondary">
-						<li><a href="#inicio" class="block rounded-md px-3 py-2 transition hover:bg-brand-navy hover:text-brand-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">Inicio</a></li>
-						<li><a href="#por-que" class="block rounded-md px-3 py-2 transition hover:bg-brand-navy hover:text-brand-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">Por que elegirnos</a></li>
-						<li><a href="#como-funciona" class="block rounded-md px-3 py-2 transition hover:bg-brand-navy hover:text-brand-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">Como funciona</a></li>
-						<li><a href="#experiencias" class="block rounded-md px-3 py-2 transition hover:bg-brand-navy hover:text-brand-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">Experiencias</a></li>
-						<li><a href="#contacto" class="block rounded-md px-3 py-2 transition hover:bg-brand-navy hover:text-brand-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">Contacto</a></li>
+				<nav id="mobile-menu" aria-label="Menu movil" class="mt-1 border-t border-brand-blue/15 pb-4 pt-4 md:hidden">
+					<ul class="space-y-1 text-sm font-medium text-brand-navy">
+						<li><a href="#inicio" class="block rounded-md px-3 py-2 transition hover:bg-brand-blue/8 hover:text-brand-electric focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">Inicio</a></li>
+						<li><a href="#por-que" class="block rounded-md px-3 py-2 transition hover:bg-brand-blue/8 hover:text-brand-electric focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">Por que elegirnos</a></li>
+						<li><a href="#como-funciona" class="block rounded-md px-3 py-2 transition hover:bg-brand-blue/8 hover:text-brand-electric focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">Como funciona</a></li>
+						<li><a href="#experiencias" class="block rounded-md px-3 py-2 transition hover:bg-brand-blue/8 hover:text-brand-electric focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">Experiencias</a></li>
+						<li><a href="#contacto" class="block rounded-md px-3 py-2 transition hover:bg-brand-blue/8 hover:text-brand-electric focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">Contacto</a></li>
 					</ul>
 				</nav>
 			</div>
